@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Chat App with geckos.io</title>
-    <script src="geckos.io-client.2.1.2.min.js"></script>
+    <script id="hljs" async src="./geckos.io-client.2.1.2.min.js"></script>
   </head>
 
   <body>
@@ -37,11 +37,11 @@
 
     <script>
       'use strict'
-
-      // pass the port and url of the server
-      var channel = geckos({ port: 3000 })
-
-      var button = document.getElementById('button')
+      var script = document.querySelector('#hljs');
+      script.addEventListener('load', function() {
+        
+        var channel = geckos({ port: 80 })
+        var button = document.getElementById('button')
       var text = document.getElementById('text')
       var list = document.getElementById('list')
       var message = document.getElementById('message')
@@ -92,6 +92,12 @@
         channel.on('chat message', function (data) {
           appendMessage(data)
         })
+
+      });
+      // pass the port and url of the server
+
+
+
       })
     </script>
   </body>
