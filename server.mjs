@@ -3,7 +3,7 @@ import { readFile } from 'fs/promises'
 import { createServer } from 'http'
 
 const indexHtml = await readFile('index.html', { encoding: 'utf-8' })
-const geckosJs = await readFile('js/geckos.io-client.2.1.2.min.js', {
+const geckosJs = await readFile('./geckos.io-client.2.1.2.min.js', {
   encoding: 'utf-8',
 })
 
@@ -11,7 +11,7 @@ const requestListener = async (req, res) => {
   if (req.url === '/')
     return res.writeHead(200, { 'Content-Type': 'text/html' }).end(indexHtml)
 
-  if (req.url === '/js/geckos.io-client.2.1.2.min.js')
+  if (req.url === './geckos.io-client.2.1.2.min.js')
     return res
       .writeHead(200, { 'Content-Type': 'application/javascript' })
       .end(geckosJs)
